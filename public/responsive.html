@@ -1,0 +1,219 @@
+<!-- ARCHIVO DE REFERENCIA: Las rutas principales son /responsive (RWD) y /adaptive (AWD) via EJS -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Versión A: RWD (Responsive Web Design) - Catálogo de Servidores</title>
+  <meta name="description" content="Implementación RWD puro utilizando un único documento HTML con CSS Grid, Flexbox, media queries y etiqueta picture para imágenes adaptativas.">
+  <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body>
+
+  <!-- Barra de Telemetría y Modo de Auditoría -->
+  <aside class="audit-badge-banner" aria-label="Indicador de auditoría">
+    <div style="display: flex; align-items: center; gap: 0.6rem;">
+      <span class="tag-rwd">MODO RWD PURO</span>
+      <span class="tech-info">Payload único para todos los clientes | Fluid CSS Grid &amp; Flexbox</span>
+    </div>
+    <div style="display: flex; align-items: center; gap: 0.75rem;">
+      <span class="live-viewport-tag" id="viewportLiveTag">Detectando viewport...</span>
+    </div>
+  </aside>
+
+  <!-- Encabezado con Navegación -->
+  <header class="site-header">
+    <div class="header-container">
+      <div class="logo-group">
+        <div class="logo-icon">HW</div>
+        <div class="logo-text">
+          <h1>NexusServer Enterprise</h1>
+          <span>Infraestructura &amp; Cómputo de Alto Rendimiento</span>
+        </div>
+      </div>
+
+      <nav class="main-nav" aria-label="Navegación principal">
+        <a href="/responsive" class="nav-link active">RWD (Versión A)</a>
+        <a href="/adaptive" class="nav-link">AWD (Versión B)</a>
+        <a href="/adaptive?view=mobile" class="nav-link highlight">Simular AWD Móvil</a>
+      </nav>
+
+      <button id="toggleFiltersBtn" class="mobile-filter-trigger" aria-label="Abrir filtros">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="4" y1="21" x2="4" y2="14"></line>
+          <line x1="4" y1="10" x2="4" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="12"></line>
+          <line x1="12" y1="8" x2="12" y2="3"></line>
+          <line x1="20" y1="21" x2="20" y2="16"></line>
+          <line x1="20" y1="12" x2="20" y2="3"></line>
+          <line x1="1" y1="14" x2="7" y2="14"></line>
+          <line x1="9" y1="8" x2="15" y2="8"></line>
+          <line x1="17" y1="16" x2="23" y2="16"></line>
+        </svg>
+        <span>Filtros</span>
+      </button>
+    </div>
+  </header>
+
+  <div class="app-container">
+
+    <aside class="filters-sidebar" id="filtersSidebar">
+      <div class="sidebar-header">
+        <h3>Filtros Avanzados</h3>
+        <button class="close-drawer-btn" id="closeFiltersBtn" aria-label="Cerrar filtros">x</button>
+      </div>
+
+      <div class="filter-group">
+        <h4>Categoría de Hardware</h4>
+        <label class="filter-option"><input type="radio" name="categoryFilter" value="all" checked><span>Todos los componentes</span></label>
+        <label class="filter-option"><input type="radio" name="categoryFilter" value="Procesadores (CPU)"><span>Procesadores (CPU)</span></label>
+        <label class="filter-option"><input type="radio" name="categoryFilter" value="Aceleradores IA / GPU"><span>Aceleradores IA / GPU</span></label>
+        <label class="filter-option"><input type="radio" name="categoryFilter" value="Almacenamiento NVMe"><span>Almacenamiento NVMe</span></label>
+        <label class="filter-option"><input type="radio" name="categoryFilter" value="Redes y Conectividad"><span>Redes 400G / NICs</span></label>
+        <label class="filter-option"><input type="radio" name="categoryFilter" value="Chasis y Servidores Bare-Metal"><span>Chasis e Infraestructura</span></label>
+      </div>
+
+      <div class="filter-group">
+        <h4>Rango Térmico (TDP)</h4>
+        <label class="filter-option"><input type="checkbox" checked><span>Estándar (menos de 350W)</span></label>
+        <label class="filter-option"><input type="checkbox" checked><span>Alta Densidad (350W o más)</span></label>
+      </div>
+
+      <div class="comparative-chart-box">
+        <h4>Comparativa de Rendimiento</h4>
+        <p style="font-size: 0.72rem; color: var(--text-dim); margin-bottom: 0.5rem;">Radar multi-eje FP64 vs Eficiencia térmica:</p>
+        <div class="chart-wrapper">
+          <canvas id="benchmarkRadarCanvas"></canvas>
+        </div>
+        <div class="chart-legend">
+          <div class="legend-item"><span class="legend-dot" style="background:#76b900"></span> H100 IA</div>
+          <div class="legend-item"><span class="legend-dot" style="background:#ff6600"></span> EPYC 9654</div>
+          <div class="legend-item"><span class="legend-dot" style="background:#0071c5"></span> Xeon 8490H</div>
+          <div class="legend-item"><span class="legend-dot" style="background:#f59e0b"></span> Solidigm NVMe</div>
+        </div>
+      </div>
+    </aside>
+
+    <div class="drawer-overlay" id="drawerOverlay"></div>
+
+    <main class="catalog-content">
+
+      <div class="catalog-toolbar">
+        <div class="results-count">
+          Mostrando <strong id="visibleCount">0</strong> componentes de servidor disponibles
+        </div>
+        <div style="font-size: 0.8rem; color: var(--text-dim);">
+          Imágenes servidas mediante picture y srcset
+        </div>
+      </div>
+
+      <section class="products-grid" id="productsGrid" aria-label="Catálogo de componentes"></section>
+
+      <section class="heavy-benchmark-section" id="heavyBenchmarkSection" aria-label="Matriz comparativa completa">
+        <div class="section-heading">
+          <h2>Matriz Exhaustiva de Especificaciones y Topología de Servidor</h2>
+          <p>Análisis de ingeniería detallado a nivel de silicio, líneas PCIe 5.0, disipación térmica y ancho de banda.
+            <em>(En terminales móviles bajo RWD, este bloque se oculta con CSS pero ya consumió bytes de transferencia).</em>
+          </p>
+        </div>
+
+        <div class="heavy-table-scroll">
+          <table class="heavy-specs-table">
+            <thead>
+              <tr>
+                <th>Componente</th>
+                <th>Categoría</th>
+                <th>Arquitectura / Litografía</th>
+                <th>Rendimiento Cómputo / IOPS</th>
+                <th>Interfaz y Líneas I/O</th>
+                <th>Seguridad Hardware</th>
+                <th>Garantía SLA</th>
+                <th>Score Benchmark</th>
+              </tr>
+            </thead>
+            <tbody id="specsTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="/js/responsive.js"></script>
+  <script src="/js/heavy-chart.js"></script>
+  <script>
+    function escHtml(str) {
+      if (str === undefined || str === null) return '';
+      return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+
+    async function loadProducts() {
+      try {
+        const res = await fetch('/api/hardware');
+        const data = await res.json();
+        const products = data.items;
+
+        const visibleCount = document.getElementById('visibleCount');
+        if (visibleCount) visibleCount.textContent = products.length;
+
+        const grid = document.getElementById('productsGrid');
+        if (grid) {
+          grid.innerHTML = products.map(p => `
+            <article class="product-card" data-category="${escHtml(p.category)}">
+              <span class="card-badge">${escHtml(p.badge)}</span>
+              <div class="product-image-container">
+                <picture>
+                  <source media="(max-width: 639px)" srcset="${escHtml(p.image.mobile)}">
+                  <source media="(min-width: 640px)" srcset="${escHtml(p.image.desktop)}">
+                  <img src="${escHtml(p.image.desktop)}" alt="${escHtml(p.image.alt)}" loading="lazy" width="400" height="300">
+                </picture>
+              </div>
+              <div class="card-body">
+                <span class="card-category">${escHtml(p.category)}</span>
+                <h2 class="card-title">${escHtml(p.name)}</h2>
+                <ul class="short-specs-list">
+                  ${Object.entries(p.shortSpecs).map(([k,v])=>`<li><strong>${escHtml(k.charAt(0).toUpperCase()+k.slice(1))}:</strong> ${escHtml(v)}</li>`).join('')}
+                </ul>
+                <div class="card-footer">
+                  <span class="price-tag">${escHtml(p.price)}</span>
+                  <button class="btn-buy" type="button" aria-label="Comprar ${escHtml(p.name)}">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                      <circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle>
+                      <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    Comprar
+                  </button>
+                </div>
+              </div>
+            </article>`).join('');
+        }
+
+        const tbody = document.getElementById('specsTableBody');
+        if (tbody) {
+          tbody.innerHTML = products.map(p => {
+            const fs = p.fullSpecs;
+            return `<tr>
+              <td><strong>${escHtml(p.name)}</strong></td>
+              <td>${escHtml(p.category)}</td>
+              <td>${escHtml(fs.arquitectura||fs.nand||fs.placaBase||'Enterprise Silicon')}</td>
+              <td>${escHtml(fs.rendimientoFlops||fs.iopsLectura||fs.tasaMensajes||fs.rendimientoIOPS||'Alta Eficiencia')}</td>
+              <td>${escHtml(fs.lineasPCIe||fs.interfaz||fs.modulo||'PCIe Gen5')}</td>
+              <td>${escHtml(fs.virtualizacion||fs.seguridad||fs.seguridadHardware||'Enterprise TPM/RoT')}</td>
+              <td>${escHtml(fs.garantia)}</td>
+              <td><span style="color:#38bdf8;font-weight:bold;">${p.benchmarkScore} / 100</span></td>
+            </tr>`;
+          }).join('');
+        }
+
+        document.dispatchEvent(new CustomEvent('productsLoaded', { detail: { products } }));
+      } catch (err) {
+        console.error('Error cargando productos:', err);
+        const grid = document.getElementById('productsGrid');
+        if (grid) grid.innerHTML = '<p style="color:red;padding:2rem;">Error al cargar los productos.</p>';
+      }
+    }
+
+    loadProducts();
+  </script>
+</body>
+</html>

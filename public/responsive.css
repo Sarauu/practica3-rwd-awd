@@ -1,0 +1,641 @@
+/* ========================================================
+   ESTILOS RWD (RESPONSIVE WEB DESIGN) - CATÁLOGO ENTERPRISE
+   Breakpoints obligatorios:
+   - Móvil:  < 640px
+   - Tablet: 640px - 1024px
+   - Desktop: > 1024px
+   ======================================================== */
+
+:root {
+  --bg-primary: #0a0f1d;
+  --bg-surface: #111827;
+  --bg-card: #151f32;
+  --bg-card-hover: #1c2942;
+  --accent-cyan: #06b6d4;
+  --accent-cyan-glow: rgba(6, 182, 212, 0.25);
+  --accent-blue: #3b82f6;
+  --accent-emerald: #10b981;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+  --border-subtle: #1e293b;
+  --border-highlight: #334155;
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Resets básicos */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  line-height: 1.5;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Indicador de Auditoría en Vivo (Header Banner) */
+.audit-badge-banner {
+  background: linear-gradient(90deg, #1e1b4b, #0f172a);
+  border-bottom: 1px solid #312e81;
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.audit-badge-banner .tag-rwd {
+  background: #3b82f6;
+  color: #fff;
+  padding: 0.2rem 0.6rem;
+  border-radius: 9999px;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+}
+
+.audit-badge-banner .tech-info {
+  color: var(--text-muted);
+}
+
+.audit-badge-banner .live-viewport-tag {
+  background: #1e293b;
+  color: #38bdf8;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-sm);
+  font-family: monospace;
+  font-size: 0.75rem;
+}
+
+/* Encabezado y Navegación Principal */
+.site-header {
+  background-color: rgba(17, 24, 39, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-subtle);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.header-container {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.logo-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logo-icon {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+  border-radius: var(--radius-md);
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+  color: #0b0f19;
+  box-shadow: 0 0 15px var(--accent-cyan-glow);
+}
+
+.logo-text h1 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.logo-text span {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  display: block;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.nav-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: var(--transition);
+  padding: 0.4rem 0.75rem;
+  border-radius: var(--radius-sm);
+}
+
+.nav-link:hover, .nav-link.active {
+  color: #fff;
+  background-color: var(--border-subtle);
+}
+
+.nav-link.highlight {
+  background: linear-gradient(135deg, #0284c7, #2563eb);
+  color: #fff;
+}
+
+/* Botón flotante/móvil para alternar filtros */
+.mobile-filter-trigger {
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-highlight);
+  color: var(--text-main);
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius-md);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.mobile-filter-trigger:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--accent-cyan);
+}
+
+/* Layout General: Dos columnas (Sidebar + Catálogo) */
+.app-container {
+  max-width: 1360px;
+  margin: 1.5rem auto;
+  padding: 0 1.5rem 3rem;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+/* Sidebar de Filtros y Comparativa */
+.filters-sidebar {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  position: sticky;
+  top: 90px;
+  max-height: calc(100vh - 110px);
+  overflow-y: auto;
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.sidebar-header h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.close-drawer-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.5rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.filter-group {
+  margin-bottom: 1.5rem;
+}
+
+.filter-group h4 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-dim);
+  margin-bottom: 0.75rem;
+}
+
+.filter-option {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.35rem 0;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.filter-option:hover {
+  color: var(--text-main);
+}
+
+.filter-option input[type="radio"],
+.filter-option input[type="checkbox"] {
+  accent-color: var(--accent-cyan);
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+/* Gráfico de Radar de Comparativa (Dentro del Sidebar o debajo) */
+.comparative-chart-box {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  margin-top: 1.5rem;
+}
+
+.comparative-chart-box h4 {
+  font-size: 0.85rem;
+  color: #38bdf8;
+  margin-bottom: 0.5rem;
+}
+
+.chart-wrapper {
+  position: relative;
+  width: 100%;
+  height: 220px;
+}
+
+#benchmarkRadarCanvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.chart-legend {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.4rem;
+  margin-top: 0.75rem;
+  font-size: 0.72rem;
+  color: var(--text-dim);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+/* Main Content Area */
+.catalog-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Toolbar de catálogo */
+.catalog-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 0.85rem 1.25rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.results-count {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.results-count strong {
+  color: var(--text-main);
+}
+
+/* Cuadrícula de 12 Productos (CSS Grid) */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Tarjeta de Producto */
+.product-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition);
+  position: relative;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-cyan);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4), 0 0 15px var(--accent-cyan-glow);
+}
+
+.card-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid var(--border-highlight);
+  color: #38bdf8;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius-sm);
+  z-index: 2;
+  backdrop-filter: blur(4px);
+}
+
+/* Contenedor de Imagen Responsiva <picture> */
+.product-image-container {
+  width: 100%;
+  height: 200px;
+  background: #0b1120;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-image-container picture,
+.product-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.card-body {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.card-category {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--accent-cyan);
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.card-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+}
+
+/* Lista de Especificaciones Rápidas */
+.short-specs-list {
+  list-style: none;
+  margin-bottom: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.short-specs-list li {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.short-specs-list li::before {
+  content: "•";
+  color: var(--accent-cyan);
+  font-weight: bold;
+}
+
+.card-footer {
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.price-tag {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #fff;
+}
+
+.btn-buy {
+  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+  color: #0b0f19;
+  border: none;
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 0.55rem 1rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--transition);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.btn-buy:hover {
+  filter: brightness(1.15);
+  box-shadow: 0 0 12px var(--accent-cyan-glow);
+}
+
+/* SECCIÓN PESADA DE COMPARATIVA Y TABLA COMPLETA */
+/* En RWD esto está en el DOM de todos los clientes! */
+.heavy-benchmark-section {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  margin-top: 1.5rem;
+}
+
+.section-heading {
+  margin-bottom: 1.25rem;
+}
+
+.section-heading h2 {
+  font-size: 1.35rem;
+  font-weight: 800;
+  margin-bottom: 0.25rem;
+}
+
+.section-heading p {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+}
+
+.heavy-table-scroll {
+  overflow-x: auto;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+}
+
+.heavy-specs-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+  text-align: left;
+  min-width: 800px;
+}
+
+.heavy-specs-table th {
+  background-color: var(--bg-card);
+  color: #e2e8f0;
+  padding: 0.85rem 1rem;
+  font-weight: 700;
+  border-bottom: 2px solid var(--border-highlight);
+  white-space: nowrap;
+}
+
+.heavy-specs-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+}
+
+.heavy-specs-table tr:hover td {
+  background-color: rgba(255, 255, 255, 0.02);
+  color: var(--text-main);
+}
+
+/* Overlay para drawer móvil */
+.drawer-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  z-index: 90;
+}
+
+.drawer-overlay.is-visible {
+  display: block;
+}
+
+/* ========================================================
+   MEDIA QUERIES FLUIDAS Y PUNTOS DE RUPTURA REQUERIDOS
+   ======================================================== */
+
+/* TABLET: 640px - 1024px */
+@media (max-width: 1024px) {
+  .app-container {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .mobile-filter-trigger {
+    display: inline-flex;
+  }
+
+  /* El sidebar colapsa en un drawer deslizable */
+  .filters-sidebar {
+    position: fixed;
+    top: 0;
+    left: -320px;
+    width: 300px;
+    height: 100vh;
+    max-height: 100vh;
+    z-index: 100;
+    transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.5);
+    border-radius: 0;
+    border-right: 1px solid var(--border-highlight);
+  }
+
+  .filters-sidebar.is-open {
+    left: 0;
+  }
+
+  .close-drawer-btn {
+    display: block;
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* MÓVIL: < 640px */
+@media (max-width: 639px) {
+  .header-container {
+    padding: 0.75rem 1rem;
+    flex-wrap: wrap;
+  }
+
+  .main-nav {
+    display: none; /* Oculto o simplificado en móvil */
+  }
+
+  .products-grid {
+    grid-template-columns: 1fr; /* Una sola columna fluida */
+    gap: 1.25rem;
+  }
+
+  .product-image-container {
+    height: 160px;
+  }
+
+  .app-container {
+    padding: 0 1rem 2rem;
+    margin: 1rem auto;
+  }
+
+  /* EN RWD MÓVIL:
+     Ocultamos el gráfico de comparativa pesada y la tabla con CSS display:none!
+     Aquí se demuestra la ineficiencia de RWD que pide la práctica:
+     El DOM enviado desde el servidor contiene todos los kilobytes del gráfico
+     y de la tabla de 12 productos con 8 especificaciones, además del script
+     heavy-chart.js, aunque el usuario móvil nunca lo vea! */
+  .heavy-benchmark-section {
+    display: none; /* Ineficiencia RWD demostrada: se transfiere pero no se muestra */
+  }
+
+  .comparative-chart-box {
+    display: none;
+  }
+}
