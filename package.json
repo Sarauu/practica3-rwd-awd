@@ -1,0 +1,27 @@
+{
+  "name": "practica-rwd-awd",
+  "version": "1.0.0",
+  "description": "Práctica de Laboratorio: RWD (Responsive Web Design) vs. AWD (Adaptive Web Design) - Catálogo de Hardware de Servidor",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": [
+    "rwd",
+    "awd",
+    "responsive",
+    "adaptive",
+    "core-web-vitals",
+    "express",
+    "ejs",
+    "performance"
+  ],
+  "author": "Laboratorio Arquitectura Web",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.21.1",
+    "express-useragent": "^1.0.15"
+  }
+}
