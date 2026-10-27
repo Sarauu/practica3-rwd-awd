@@ -1,0 +1,350 @@
+[
+  {
+    "id": "cpu-epyc-9654",
+    "name": "AMD EPYC™ 9654 Genoa",
+    "category": "Procesadores (CPU)",
+    "price": "$11,805 USD",
+    "badge": "Top Enterprise",
+    "shortSpecs": {
+      "nucleos": "96 Núcleos / 192 Hilos",
+      "frecuencia": "2.4 GHz Base / 3.7 GHz Boost",
+      "tdp": "360W",
+      "socket": "SP5 (LGA 6096)"
+    },
+    "fullSpecs": {
+      "arquitectura": "Zen 4 (5nm TSMC)",
+      "cacheL3": "384 MB L3 Cache",
+      "memoriaSoportada": "DDR5-4800 (12 canales)",
+      "lineasPCIe": "128 líneas PCIe 5.0",
+      "rendimientoFlops": "5.68 TFLOPS FP64",
+      "temperaturaMax": "90°C",
+      "virtualizacion": "AMD-V, SEV-SNP, Secure Memory Encryption",
+      "garantia": "3 años enterprise replacement"
+    },
+    "image": {
+      "mobile": "/images/mobile/AMDGenoa.png",
+      "desktop": "/images/desktop/AMDGenoa.png",
+      "alt": "Procesador AMD EPYC 9654 Genoa Server"
+    },
+    "benchmarkScore": 98.4
+  },
+  {
+    "id": "cpu-xeon-8490h",
+    "name": "Intel® Xeon® Platinum 8490H",
+    "category": "Procesadores (CPU)",
+    "price": "$17,000 USD",
+    "badge": "Sapphire Rapids",
+    "shortSpecs": {
+      "nucleos": "60 Núcleos / 120 Hilos",
+      "frecuencia": "1.9 GHz Base / 3.5 GHz Turbo",
+      "tdp": "350W",
+      "socket": "FCLGA4677"
+    },
+    "fullSpecs": {
+      "arquitectura": "Intel 7 (10nm Enhanced SuperFin)",
+      "cacheL3": "112.5 MB Intel Smart Cache",
+      "memoriaSoportada": "DDR5-4800 (8 canales)",
+      "lineasPCIe": "80 líneas PCIe 5.0",
+      "rendimientoFlops": "4.20 TFLOPS FP64",
+      "aceleradores": "Intel AMX, QAT, DLB, IAA integrados",
+      "escalabilidad": "Hasta 8 sockets coherentes",
+      "garantia": "3 años Intel Data Center Warranty"
+    },
+    "image": {
+      "mobile": "/images/mobile/platinum.jpg",
+      "desktop": "/images/desktop/platinum.jpg",
+      "alt": "Procesador Intel Xeon Platinum 8490H Server"
+    },
+    "benchmarkScore": 92.1
+  },
+  {
+    "id": "gpu-h100-sxm5",
+    "name": "NVIDIA® H100 SXM5 80GB",
+    "category": "Aceleradores IA / GPU",
+    "price": "$32,500 USD",
+    "badge": "IA Tensor Core",
+    "shortSpecs": {
+      "memoria": "80 GB HBM3",
+      "anchoBanda": "3.35 TB/s",
+      "tdp": "700W SXM5",
+      "interconexion": "NVLink 4.0 (900 GB/s)"
+    },
+    "fullSpecs": {
+      "arquitectura": "NVIDIA Hopper (TSMC 4N)",
+      "tensorCores": "528 Tensor Cores 4ta Gen",
+      "rendimientoFP8": "2,000 TFLOPS FP8 IA",
+      "rendimientoFP16": "1,000 TFLOPS FP16",
+      "rendimientoFP64": "67 TFLOPS FP64 Tensor",
+      "formFactor": "SXM5 Mezzanine Module",
+      "soporteMig": "Hasta 7 instancias GPU Multi-Tenant",
+      "garantia": "Garantía corporativa NVIDIA Enterprise"
+    },
+    "image": {
+      "mobile": "/images/mobile/NVIDIAH100.jpeg",
+      "desktop": "/images/desktop/NVIDIAH100.jpeg",
+      "alt": "NVIDIA H100 SXM5 80GB Tensor Core GPU"
+    },
+    "benchmarkScore": 99.8
+  },
+  {
+    "id": "gpu-l40s-pcie",
+    "name": "NVIDIA® L40S 48GB PCIe",
+    "category": "Aceleradores IA / GPU",
+    "price": "$12,400 USD",
+    "badge": "Omniverse & Inferencia",
+    "shortSpecs": {
+      "memoria": "48 GB GDDR6 con ECC",
+      "anchoBanda": "864 GB/s",
+      "tdp": "350W",
+      "interfaz": "PCIe 4.0 x16"
+    },
+    "fullSpecs": {
+      "arquitectura": "Ada Lovelace Enterprise",
+      "cudaCores": "18,176 CUDA Cores",
+      "tensorCores": "568 Tensor Cores 4ta Gen",
+      "rtCores": "142 RT Cores 3ra Gen",
+      "rendimientoFP32": "91.6 TFLOPS",
+      "encoders": "3x NVENC (AV1 hardware decode/encode)",
+      "formFactor": "Doble ranura, refrigeración pasiva",
+      "garantia": "3 años NVIDIA Certified Systems"
+    },
+    "image": {
+      "mobile": "/images/mobile/NVIDIAL40S.jpeg",
+      "desktop": "/images/desktop/NVIDIAL40S.jpeg",
+      "alt": "NVIDIA L40S 48GB PCIe Server GPU"
+    },
+    "benchmarkScore": 88.5
+  },
+  {
+    "id": "ram-samsung-128gb",
+    "name": "Samsung 128GB DDR5-4800 ECC",
+    "category": "Memoria RAM Servidor",
+    "price": "$1,150 USD",
+    "badge": "Registered RDIMM",
+    "shortSpecs": {
+      "capacidad": "128 GB (1x128GB)",
+      "tipo": "DDR5 ECC Registered",
+      "velocidad": "PC5-38400 (4800 MT/s)",
+      "voltaje": "1.1V Ultra Low Power"
+    },
+    "fullSpecs": {
+      "rango": "4Rx4 (Quad Rank)",
+      "latencia": "CL40-40-40",
+      "modulo": "288-pin RDIMM servidor",
+      "correccionError": "On-Die ECC + Sideband ECC",
+      "temperaturaOperacion": "0°C a 95°C Enterprise",
+      "chips": "Samsung DRAM 16Gb B-die",
+      "compatibilidad": "Intel Sapphire/Emerald, AMD Genoa/Bergamo",
+      "garantia": "Garantía de por vida con reemplazo anticipado"
+    },
+    "image": {
+      "mobile": "/images/mobile/samsung.jpg",
+      "desktop": "/images/desktop/samsung.jpg",
+      "alt": "Memoria Samsung 128GB DDR5 ECC Server"
+    },
+    "benchmarkScore": 84.0
+  },
+  {
+    "id": "ssd-micron-9400",
+    "name": "Micron® 9400 PRO 15.36TB",
+    "category": "Almacenamiento NVMe",
+    "price": "$2,350 USD",
+    "badge": "PCIe 4.0 U.3",
+    "shortSpecs": {
+      "capacidad": "15.36 TB",
+      "formFactor": "U.3 15mm (2.5 pulgadas)",
+      "lecturaSec": "7,000 MB/s",
+      "escrituraSec": "7,000 MB/s"
+    },
+    "fullSpecs": {
+      "interfaz": "PCIe Gen4 x4 NVMe 1.4",
+      "iopsLectura": "1,600,000 IOPS (4K aleatorio)",
+      "iopsEscritura": "600,000 IOPS (4K aleatorio)",
+      "resistenciaDwpd": "1 DWPD (28 PBW total)",
+      "latenciaMedia": "Lectura 60µs / Escritura 15µs",
+      "nand": "Micron 176-layer 3D TLC",
+      "seguridad": "AES-256 SED, TCG Enterprise, sanitize crypto",
+      "garantia": "5 años de garantía empresarial"
+    },
+    "image": {
+      "mobile": "/images/mobile/micron.jpeg",
+      "desktop": "/images/desktop/micron.jpeg",
+      "alt": "SSD Micron 9400 PRO 15.36TB NVMe U.3"
+    },
+    "benchmarkScore": 91.0
+  },
+  {
+    "id": "ssd-solidigm-61tb",
+    "name": "Solidigm™ D5-P5336 61.44TB",
+    "category": "Almacenamiento NVMe",
+    "price": "$7,890 USD",
+    "badge": "Densidad Extrema",
+    "shortSpecs": {
+      "capacidad": "61.44 TB",
+      "formFactor": "E1.L / U.2 15mm",
+      "lecturaSec": "7,000 MB/s",
+      "escrituraSec": "3,300 MB/s"
+    },
+    "fullSpecs": {
+      "interfaz": "PCIe 4.0 x4, NVMe 1.4c",
+      "iopsLectura": "1,005,000 IOPS",
+      "iopsEscritura": "43,000 IOPS sostenido",
+      "resistenciaDwpd": "0.58 DWPD (65.2 PBW)",
+      "nand": "Solidigm 192-Layer 3D QLC",
+      "enfocado": "Datacenters Cloud, Data Lakes, Modelos LLM",
+      "consumoMax": "25W Activo / 5W Reposo",
+      "garantia": "5 años Solidigm Data Center Limited Warranty"
+    },
+    "image": {
+      "mobile": "/images/mobile/solidig.jpg",
+      "desktop": "/images/desktop/solidig.jpg",
+      "alt": "SSD Solidigm D5-P5336 61.44TB NVMe"
+    },
+    "benchmarkScore": 94.7
+  },
+  {
+    "id": "nic-mellanox-cx7",
+    "name": "NVIDIA® Mellanox ConnectX-7 400G",
+    "category": "Redes y Conectividad",
+    "price": "$3,100 USD",
+    "badge": "400 GbE / NDR",
+    "shortSpecs": {
+      "velocidad": "400 Gb/s por puerto",
+      "puertos": "1x OSFP / QSFP112",
+      "interfaz": "PCIe 5.0 x16",
+      "descargas": "RoCE v2, ASAP² OVS"
+    },
+    "fullSpecs": {
+      "tecnologias": "InfiniBand NDR / 400GbE dual-protocol",
+      "tasaMensajes": "375 millones de mensajes/segundo",
+      "latencia": "Menor a 600 ns (Ultra Low Latency)",
+      "descargaHardware": "IPsec, TLS inline, NVMe-oF target/initiator",
+      "virtualizacionSRIOV": "Hasta 1024 funciones virtuales",
+      "seguridadHardware": "Secure Boot, Root of Trust en silicio",
+      "bracket": "Full-height y Low-profile incluidos",
+      "garantia": "3 años Enterprise Advance Exchange"
+    },
+    "image": {
+      "mobile": "/images/mobile/NVIDIA-ConnectX-7.png",
+      "desktop": "/images/desktop/NVIDIA-ConnectX-7.png",
+      "alt": "Adaptador Mellanox ConnectX-7 400G PCIe 5.0"
+    },
+    "benchmarkScore": 97.2
+  },
+  {
+    "id": "raid-broadcom-9560",
+    "name": "Broadcom MegaRAID 9560-16i",
+    "category": "Controladoras SAS/SATA/NVMe",
+    "price": "$1,450 USD",
+    "badge": "Tri-Mode RAID",
+    "shortSpecs": {
+      "puertos": "16 puertos internos Tri-Mode",
+      "cache": "8GB DDR4 Cache con BBU",
+      "interfaz": "PCIe 4.0 x8",
+      "nivelesRaid": "RAID 0, 1, 5, 6, 10, 50, 60"
+    },
+    "fullSpecs": {
+      "procesadorIOP": "SAS3916 dual-core ARM A15",
+      "conectividadDispositivos": "Hasta 240 unidades SAS/SATA o 32 NVMe",
+      "rendimientoIOPS": "Hasta 3,000,000 IOPS en RAID 0",
+      "proteccionCache": "CacheVault CVPM05 sin mantenimiento",
+      "conector": "2x SlimSAS SFF-8654 (x8)",
+      "soporteJBOD": "Modo directo JBOD / HBA conmutable",
+      "firmware": "SafeStore Encryption Services",
+      "garantia": "3 años Broadcom Limited Warranty"
+    },
+    "image": {
+      "mobile": "/images/mobile/Broadcom.jpg",
+      "desktop": "/images/desktop/Broadcom.jpg",
+      "alt": "Controladora Broadcom MegaRAID 9560-16i Tri-Mode"
+    },
+    "benchmarkScore": 86.8
+  },
+  {
+    "id": "chassis-supermicro-2u",
+    "name": "Supermicro Hyper 2U Dual-Socket",
+    "category": "Chasis y Servidores Bare-Metal",
+    "price": "$4,900 USD",
+    "badge": "Enterprise 2U Rack",
+    "shortSpecs": {
+      "factorForma": "2U Rackmount (profundidad 760mm)",
+      "bahias": "24x 2.5\" NVMe Hot-Swap frontales",
+      "refrigeracion": "4x ventiladores PWM 80mm contrarrotativos",
+      "expansion": "8x ranuras PCIe 5.0 x16 / x8"
+    },
+    "fullSpecs": {
+      "placaBase": "Super X13DEG-OAD Dual LGA-4677",
+      "alimentacion": "2x 2000W Redundantes 80+ Titanium",
+      "gestionRemota": "IPMI 2.0 con KVM virtual y HTML5 dedicado",
+      "monitoreoSensores": "32 sensores térmicos con control PID dinámico",
+      "seguridadChasis": "Intrusion switch, bisel frontal con llave",
+      "carrilesMontaje": "Tool-less quick install rack rails incluidos",
+      "certificaciones": "CE, FCC, RoHS, Energy Star 3.0",
+      "garantia": "3 años piezas y mano de obra On-site"
+    },
+    "image": {
+      "mobile": "/images/mobile/SYS-221H-TNR.jpg",
+      "desktop": "/images/desktop/SYS-221H-TNR.jpg",
+      "alt": "Chasis Supermicro 2U Hyper SuperServer"
+    },
+    "benchmarkScore": 89.0
+  },
+  {
+    "id": "psu-delta-2600w",
+    "name": "Delta Electronics 2600W Titanium PSU",
+    "category": "Energía e Infraestructura",
+    "price": "$680 USD",
+    "badge": "80+ Titanium 96%",
+    "shortSpecs": {
+      "potencia": "2600W Continua",
+      "eficiencia": "96% a 50% de carga (Titanium)",
+      "factorForma": "CRPS Common Redundant 1U",
+      "voltajeEntrada": "200-240V AC / 240V HVDC"
+    },
+    "fullSpecs": {
+      "salida12V": "213.1A línea única de 12V",
+      "salidaStandby": "12Vsb @ 3.5A",
+      "comunicacion": "PMBus 1.2 digital con telemetría en tiempo real",
+      "mtbf": "> 500,000 horas a 45°C",
+      "protecciones": "OVP, OCP, OTP, SCP, UVP con latched shutdown",
+      "refrigeracion": "Ventilador doble cojinete magnético con curva silenciosa",
+      "dimensiones": "185 x 73.5 x 40 mm CRPS standard",
+      "garantia": "5 años soporte continuo 24/7"
+    },
+    "image": {
+      "mobile": "/images/mobile/Delta2600w.png",
+      "desktop": "/images/desktop/Delta2600w.png",
+      "alt": "Fuente de poder Delta Electronics 2600W Titanium CRPS"
+    },
+    "benchmarkScore": 82.5
+  },
+  {
+    "id": "cooling-direct-chip",
+    "name": "CoolIT Systems Direct-to-Chip DCDU",
+    "category": "Refrigeración Líquida",
+    "price": "$8,200 USD",
+    "badge": "Data Center Liquid",
+    "shortSpecs": {
+      "capacidadRefrig": "Hasta 100 kW por rack",
+      "bomba": "Doble bomba magnética redundante N+1",
+      "refrigerante": "Inhibidor no tóxico PG25 / Agua tratada",
+      "monitoreo": "Pantalla táctil LCD + Modbus / SNMP"
+    },
+    "fullSpecs": {
+      "caudalMax": "120 Litros/minuto a 2.5 bar",
+      "conectores": "Quick Disconnect sin goteo Dry-Break",
+      "pueObjetivo": "Reduce PUE de centro de cómputo a < 1.08",
+      "compatibilidad": "Bloques de cobre micro-aletas para H100 y Genoa",
+      "sensoresFuga": "Cable sensor continuo perimetral con alarma acústica",
+      "temperaturaRetorno": "Admite agua tibia hasta 45°C ASHRAE W4",
+      "dimensiones": "Unidad CDU para rack de 4U",
+      "garantia": "5 años de servicio integral con recarga periódica"
+    },
+    "image": {
+      "mobile": "/images/mobile/CoolIT.jpg",
+      "desktop": "/images/desktop/CoolIT.jpg",
+      "alt": "Sistema de Refrigeración Líquida para Rack CoolIT DCDU"
+    },
+    "benchmarkScore": 95.0
+  }
+]
