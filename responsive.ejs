@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Versión A: RWD (Responsive Web Design) - Catálogo de Servidores</title>
+  <meta name="description" content="Implementación RWD puro utilizando un único documento HTML con CSS Grid, Flexbox, media queries y etiqueta picture para imágenes adaptativas.">
+  <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body>
+
+  <!-- Barra de Telemetría y Modo de Auditoría -->
+  <aside class="audit-badge-banner" aria-label="Indicador de auditoría">
+    <div style="display: flex; align-items: center; gap: 0.6rem;">
+      <span class="tag-rwd">MODO RWD PURO</span>
+      <span class="tech-info">Payload único para todos los clientes | Fluid CSS Grid & Flexbox</span>
+    </div>
+    <div style="display: flex; align-items: center; gap: 0.75rem;">
+      <span class="live-viewport-tag" id="viewportLiveTag">Detectando viewport...</span>
+    </div>
+  </aside>
+
+  <!-- Encabezado con Navegación -->
+  <header class="site-header">
+    <div class="header-container">
+      <div class="logo-group">
+        <div class="logo-icon">HW</div>
+        <div class="logo-text">
+          <h1>NexusServer Enterprise</h1>
+          <span>Infraestructura & Cómputo de Alto Rendimiento</span>
+        </div>
+      </div>
+
+      <nav class="main-nav" aria-label="Navegación principal">
+        <a href="/responsive" class="nav-link active">RWD (Versión A)</a>
+        <a href="/adaptive" class="nav-link">AWD (Versión B)</a>
+        <a href="/adaptive?view=mobile" class="nav-link highlight">Simular AWD Móvil</a>
+      </nav>
+
+      <button id="toggleFiltersBtn" class="mobile-filter-trigger" aria-label="Abrir filtros">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="4" y1="21" x2="4" y2="14"></line>
+          <line x1="4" y1="10" x2="4" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="12"></line>
+          <line x1="12" y1="8" x2="12" y2="3"></line>
+          <line x1="20" y1="21" x2="20" y2="16"></line>
+          <line x1="20" y1="12" x2="20" y2="3"></line>
+          <line x1="1" y1="14" x2="7" y2="14"></line>
+          <line x1="9" y1="8" x2="15" y2="8"></line>
+          <line x1="17" y1="16" x2="23" y2="16"></line>
+        </svg>
+        <span>Filtros</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Contenedor Principal (Layout de dos columnas fluido) -->
+  <div class="app-container">
+    
+    <!-- Barra lateral con filtros avanzados y gráfico de comparativa -->
+    <aside class="filters-sidebar" id="filtersSidebar">
+      <div class="sidebar-header">
+        <h3>Filtros Avanzados</h3>
+        <button class="close-drawer-btn" id="closeFiltersBtn" aria-label="Cerrar filtros">×</button>
+      </div>
+
+      <div class="filter-group">
+        <h4>Categoría de Hardware</h4>
+        <label class="filter-option">
+          <input type="radio" name="categoryFilter" value="all" checked>
+          <span>Todos los componentes</span>
+        </label>
+        <label class="filter-option">
+          <input type="radio" name="categoryFilter" value="Procesadores (CPU)">
+          <span>Procesadores (CPU)</span>
+        </label>
+        <label class="filter-option">
+          <input type="radio" name="categoryFilter" value="Aceleradores IA / GPU">
+          <span>Aceleradores IA / GPU</span>
+        </label>
+        <label class="filter-option">
+          <input type="radio" name="categoryFilter" value="Almacenamiento NVMe">
+          <span>Almacenamiento NVMe</span>
+        </label>
+        <label class="filter-option">
+          <input type="radio" name="categoryFilter" value="Redes y Conectividad">
+          <span>Redes 400G / NICs</span>
+        </label>
+        <label class="filter-option">
+          <input type="radio" name="categoryFilter" value="Chasis y Servidores Bare-Metal">
+          <span>Chasis e Infraestructura</span>
+        </label>
+      </div>
+
+      <div class="filter-group">
+        <h4>Rango Térmico (TDP)</h4>
+        <label class="filter-option">
+          <input type="checkbox" checked>
+          <span>Estándar (< 350W)</span>
+        </label>
+        <label class="filter-option">
+          <input type="checkbox" checked>
+          <span>Alta Densidad (≥ 350W)</span>
+        </label>
+      </div>
+
+      <!-- Gráfico de Comparativa Pesada en Sidebar -->
+      <div class="comparative-chart-box">
+        <h4>Comparativa de Rendimiento</h4>
+        <p style="font-size: 0.72rem; color: var(--text-dim); margin-bottom: 0.5rem;">
+          Radar multi-eje FP64 vs Eficiencia térmica:
+        </p>
+        <div class="chart-wrapper">
+          <canvas id="benchmarkRadarCanvas"></canvas>
+        </div>
+        <div class="chart-legend">
+          <div class="legend-item"><span class="legend-dot" style="background:#76b900"></span> H100 IA</div>
+          <div class="legend-item"><span class="legend-dot" style="background:#ff6600"></span> EPYC 9654</div>
+          <div class="legend-item"><span class="legend-dot" style="background:#0071c5"></span> Xeon 8490H</div>
+          <div class="legend-item"><span class="legend-dot" style="background:#f59e0b"></span> Solidigm NVMe</div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Overlay para drawer móvil -->
+    <div class="drawer-overlay" id="drawerOverlay"></div>
+
+    <!-- Catálogo de Productos -->
+    <main class="catalog-content">
+      
+      <div class="catalog-toolbar">
+        <div class="results-count">
+          Mostrando <strong id="visibleCount"><%= products.length %></strong> componentes de servidor disponibles
+        </div>
+        <div style="font-size: 0.8rem; color: var(--text-dim);">
+          Imágenes servidas mediante <code>&lt;picture&gt;</code> y <code>srcset</code>
+        </div>
+      </div>
+
+      <!-- Cuadrícula de 12 tarjetas de productos -->
+      <section class="products-grid" id="productsGrid" aria-label="Catálogo de componentes">
+        <% products.forEach(function(product) { %>
+          <article class="product-card" data-category="<%= product.category %>">
+            <span class="card-badge"><%= product.badge %></span>
+            
+            <!-- Implementación obligatoria de <picture> con srcset para optimización -->
+            <div class="product-image-container">
+              <picture>
+                <source media="(max-width: 639px)" srcset="<%= product.image.mobile %>">
+                <source media="(min-width: 640px)" srcset="<%= product.image.desktop %>">
+                <img src="<%= product.image.desktop %>" alt="<%= product.image.alt %>" loading="lazy" width="400" height="300">
+              </picture>
+            </div>
+
+            <div class="card-body">
+              <span class="card-category"><%= product.category %></span>
+              <h2 class="card-title"><%= product.name %></h2>
+
+              <ul class="short-specs-list">
+                <% Object.entries(product.shortSpecs).forEach(function([key, val]) { %>
+                  <li><strong><%= key.charAt(0).toUpperCase() + key.slice(1) %>:</strong> <%= val %></li>
+                <% }); %>
+              </ul>
+
+              <div class="card-footer">
+                <span class="price-tag"><%= product.price %></span>
+                <button class="btn-buy" type="button" aria-label="Comprar <%= product.name %>">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                  </svg>
+                  Comprar
+                </button>
+              </div>
+            </div>
+          </article>
+        <% }); %>
+      </section>
+
+      <!-- SECCIÓN PESADA DE COMPARATIVA Y TABLA COMPLETA DE ESPECIFICACIONES -->
+      <!-- En RWD, este bloque SIEMPRE viaja en el HTML inicial para todos los clientes -->
+      <section class="heavy-benchmark-section" id="heavyBenchmarkSection" aria-label="Matriz comparativa completa">
+        <div class="section-heading">
+          <h2>Matriz Exhaustiva de Especificaciones y Topología de Servidor</h2>
+          <p>
+            Análisis de ingeniería detallado a nivel de silicio, líneas PCIe 5.0, disipación térmica y ancho de banda.
+            <em>(En terminales móviles bajo RWD, este bloque se oculta con CSS pero ya consumió bytes de transferencia).</em>
+          </p>
+        </div>
+
+        <div class="heavy-table-scroll">
+          <table class="heavy-specs-table">
+            <thead>
+              <tr>
+                <th>Componente</th>
+                <th>Categoría</th>
+                <th>Arquitectura / Litografía</th>
+                <th>Rendimiento Cómputo / IOPS</th>
+                <th>Interfaz & Líneas I/O</th>
+                <th>Seguridad Hardware</th>
+                <th>Garantía SLA</th>
+                <th>Score Benchmark</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% products.forEach(function(product) { %>
+                <tr>
+                  <td><strong><%= product.name %></strong></td>
+                  <td><%= product.category %></td>
+                  <td><%= product.fullSpecs.arquitectura || product.fullSpecs.nand || product.fullSpecs.placaBase || 'Enterprise Silicon' %></td>
+                  <td><%= product.fullSpecs.rendimientoFlops || product.fullSpecs.iopsLectura || product.fullSpecs.tasaMensajes || product.fullSpecs.rendimientoIOPS || 'Alta Eficiencia' %></td>
+                  <td><%= product.fullSpecs.lineasPCIe || product.fullSpecs.interfaz || product.fullSpecs.modulo || 'PCIe Gen5' %></td>
+                  <td><%= product.fullSpecs.virtualizacion || product.fullSpecs.seguridad || product.fullSpecs.seguridadHardware || 'Enterprise TPM/RoT' %></td>
+                  <td><%= product.fullSpecs.garantia %></td>
+                  <td><span style="color: #38bdf8; font-weight: bold;"><%= product.benchmarkScore %> / 100</span></td>
+                </tr>
+              <% }); %>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Scripts: Funcionalidad de filtros fluidos y motor pesado de gráficos radar -->
+  <script src="/js/responsive.js"></script>
+  <script src="/js/heavy-chart.js"></script>
+</body>
+</html>

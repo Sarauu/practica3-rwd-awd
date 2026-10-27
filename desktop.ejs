@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Versión B: AWD Desktop (Adaptive Web Design) - Catálogo Servidores</title>
+  <meta name="description" content="Implementación AWD Desktop: Servidor Node.js/Express entrega DOM enriquecido con gráficos de radar y matriz completa de especificaciones para clientes de escritorio.">
+  <link rel="stylesheet" href="/css/desktop.css">
+</head>
+<body>
+
+  <!-- Barra de Telemetría AWD -->
+  <aside class="audit-badge-banner" aria-label="Indicador de arquitectura">
+    <div style="display: flex; align-items: center; gap: 0.6rem;">
+      <span class="tag-awd">MODO AWD (DESKTOP)</span>
+      <span>Detección en Servidor: Cliente Desktop detectado vía User-Agent</span>
+    </div>
+    <div style="display: flex; align-items: center; gap: 1rem;">
+      <a href="/adaptive?view=mobile" style="color: #c084fc; font-weight: bold; font-size: 0.78rem;">Simular Vista Móvil AWD →</a>
+    </div>
+  </aside>
+
+  <!-- Encabezado Desktop -->
+  <header class="site-header">
+    <div class="header-container">
+      <div class="logo-group">
+        <div class="logo-icon">AWD</div>
+        <div>
+          <h1 style="font-size: 1.25rem; font-weight: 800;">NexusServer AWD</h1>
+          <span style="font-size: 0.75rem; color: #94a3b8;">Entrega Condicional en Servidor (Desktop Template)</span>
+        </div>
+      </div>
+
+      <nav class="main-nav" aria-label="Navegación">
+        <a href="/responsive" class="nav-link">RWD (Versión A)</a>
+        <a href="/adaptive" class="nav-link active">AWD Desktop</a>
+        <a href="/adaptive?view=mobile" class="nav-link" style="color: #10b981; font-weight: 700;">AWD Móvil</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Layout Desktop 2 Columnas -->
+  <div class="app-container">
+    
+    <!-- Sidebar con filtros y radar de comparativa -->
+    <aside class="filters-sidebar">
+      <h3 style="font-size: 1.1rem; margin-bottom: 1.25rem;">Filtros de Servidor</h3>
+
+      <div class="filter-group">
+        <h4>Línea de Silicio</h4>
+        <label class="filter-option"><input type="checkbox" checked> AMD EPYC Genoa</label>
+        <label class="filter-option"><input type="checkbox" checked> Intel Xeon Sapphire</label>
+        <label class="filter-option"><input type="checkbox" checked> NVIDIA Hopper IA</label>
+        <label class="filter-option"><input type="checkbox" checked> NVMe PCIe Gen5</label>
+      </div>
+
+      <div class="filter-group">
+        <h4>Consumo de Energía</h4>
+        <label class="filter-option"><input type="radio" name="pwr" checked> Todas las potencias</label>
+        <label class="filter-option"><input type="radio" name="pwr"> Eficiencia Titanium</label>
+      </div>
+
+      <!-- Gráfico de Comparativa Pesada (Exclusivo de Desktop en AWD) -->
+      <div class="comparative-chart-box">
+        <h4 style="font-size: 0.85rem; color: #c084fc; margin-bottom: 0.5rem;">Benchmark Radar Multi-Factor</h4>
+        <div class="chart-wrapper">
+          <canvas id="benchmarkRadarCanvas"></canvas>
+        </div>
+        <p style="font-size: 0.72rem; color: #64748b; margin-top: 0.5rem;">
+          Renderizado en cliente vía canvas con telemetría de 128 métricas.
+        </p>
+      </div>
+    </aside>
+
+    <!-- Contenido Principal -->
+    <main>
+      <div style="margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+        <h2 style="font-size: 1.35rem; font-weight: 800;">Catálogo de Componentes Enterprise</h2>
+        <span style="font-size: 0.85rem; color: #94a3b8;">12 productos con especificaciones completas</span>
+      </div>
+
+      <!-- Grilla Desktop (3 columnas) -->
+      <section class="products-grid">
+        <% products.forEach(function(product) { %>
+          <article class="product-card">
+            <div class="product-image-container">
+              <!-- En Desktop AWD servimos directamente la imagen desktop de alta resolución -->
+              <img src="<%= product.image.desktop %>" alt="<%= product.image.alt %>" loading="lazy" width="400" height="300">
+            </div>
+
+            <div class="card-body">
+              <span class="card-category"><%= product.category %></span>
+              <h3 class="card-title"><%= product.name %></h3>
+
+              <ul class="short-specs-list">
+                <% Object.entries(product.shortSpecs).forEach(function([key, val]) { %>
+                  <li><strong><%= key.charAt(0).toUpperCase() + key.slice(1) %>:</strong> <%= val %></li>
+                <% }); %>
+              </ul>
+
+              <div class="card-footer">
+                <span class="price-tag"><%= product.price %></span>
+                <button class="btn-buy" type="button">Comprar</button>
+              </div>
+            </div>
+          </article>
+        <% }); %>
+      </section>
+
+      <!-- SECCIÓN PESADA DE COMPARATIVA Y TABLA COMPLETA EN AWD DESKTOP -->
+      <section class="heavy-benchmark-section">
+        <h2 style="font-size: 1.3rem; margin-bottom: 0.35rem;">Matriz Completa de Silicio y Topología Rack</h2>
+        <p style="color: #94a3b8; font-size: 0.85rem; margin-bottom: 1rem;">
+          Este DOM completo es entregado por el servidor únicamente a navegadores de escritorio que disponen de pantalla y ancho de banda suficiente.
+        </p>
+
+        <div class="heavy-table-scroll">
+          <table class="heavy-specs-table">
+            <thead>
+              <tr>
+                <th>Componente</th>
+                <th>Categoría</th>
+                <th>Arquitectura</th>
+                <th>Rendimiento Cómputo / IOPS</th>
+                <th>Interfaz / Canales</th>
+                <th>Seguridad Hardware</th>
+                <th>Garantía</th>
+                <th>Score</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% products.forEach(function(product) { %>
+                <tr>
+                  <td><strong><%= product.name %></strong></td>
+                  <td><%= product.category %></td>
+                  <td><%= product.fullSpecs.arquitectura || product.fullSpecs.nand || product.fullSpecs.placaBase || 'Enterprise Silicon' %></td>
+                  <td><%= product.fullSpecs.rendimientoFlops || product.fullSpecs.iopsLectura || product.fullSpecs.tasaMensajes || product.fullSpecs.rendimientoIOPS || 'Alta Eficiencia' %></td>
+                  <td><%= product.fullSpecs.lineasPCIe || product.fullSpecs.interfaz || product.fullSpecs.modulo || 'PCIe Gen5' %></td>
+                  <td><%= product.fullSpecs.virtualizacion || product.fullSpecs.seguridad || product.fullSpecs.seguridadHardware || 'Enterprise TPM/RoT' %></td>
+                  <td><%= product.fullSpecs.garantia %></td>
+                  <td><strong style="color: #a855f7;"><%= product.benchmarkScore %></strong></td>
+                </tr>
+              <% }); %>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Script Pesado de gráficos (SOLO presente en Desktop AWD) -->
+  <script src="/js/heavy-chart.js"></script>
+</body>
+</html>
